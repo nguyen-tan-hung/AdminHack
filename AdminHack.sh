@@ -54,10 +54,10 @@ echo -e "\t${colors[rand1]} |       || | |   ||       ||   ||       | |       ||
 echo -e "\t${colors[rand1]} |       || |_|   ||       ||   ||  _    | |       ||       ||      _||     |_"
 echo -e "\t${colors[rand1]} |   _   ||       || ||_|| ||   || | |   | |   _   ||   _   ||     |_ |    _  |"
 echo -e "\t${colors[rand1]} |__| |__||______| |_|   |_||___||_|  |__| |__| |__||__| |__||_______||___| |_|"
-        echo -e "                 \t${bd}${g}╭${w} Author  ${b}:${c} ${ul}Mishakorzhik${n}          ${g}${n}"
-        echo -e "                 \t${bd}${g}│${w} Version ${b}:${w} 1.8.2                          ${g}${n}"
+        echo -e "                 \t${bd}${g}╭${w} Tác giả  ${b}:${c} ${ul}Mishakorzhik${n}          ${g}${n}"
+        echo -e "                 \t${bd}${g}│${w} Phiên bản ${b}:${w} 1.8.2                          ${g}${n}"
         echo -e "                 \t${bd}${g}│${w} Code    ${b}:${w} Bash, python                   ${g}${n}"
-        echo -e "     \t${bd}${g} ╭──────────────┴${w} Date    ${b}:${w} 16 05 2021                 ${g}${n}"
+        echo -e "     \t${bd}${g} ╭──────────────┴${w} Ngày    ${b}:${w} 16 05 2021                 ${g}${n}"
 }
 
 # Function to check and print the content of robots.txt
@@ -103,22 +103,22 @@ sleep 1.5
 
 
 banner
-echo -ne "      \t${c}[${w}>${c}] ${w}Enter your website ${g}:${n} "
+echo -ne "      \t${c}[${w}>${c}] ${w}Nhập website ${g}:${n} "
 read web
 
 if [[ -z $web ]]; then
     printf "\n"
-    echo -e "${b}[${r}!${b}]${w} Error! Invalid web site !!"
+    echo -e "${b}[${r}!${b}]${w} Lỗii! Web không hợp lệ !!"
     exit 0
 fi
 
 web=$(echo ${web} | cut -d '/' -f 3)
 
 
-echo -ne "      \t${c}[${w}>${c}] ${w}Enter your wordlist ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
+echo -ne "      \t${c}[${w}>${c}] ${w}Nhập danh sách của bạn ${g}(${w}Default${g}:${w} wordlist.txt${g}) ${g}:${n} "
 read wordlist
 
-echo -ne "      \t${c}[${w}>${c}] ${w}Do you want to save the output? (yes/no) ${g}:${n} "
+echo -ne "      \t${c}[${w}>${c}] ${w}Bạn có muốn lưu kết quả không? (yes/no) ${g}:${n} "
 read save_output
 
 if [[ "$save_output" == "yes" ]]; then
@@ -132,25 +132,25 @@ fi
 wordlist=${wordlist:-wordlist.txt}
 if ! [[ -e $wordlist ]]; then
     printf "\n"
-    echo -e "${b}[${r}!${b}]${w} List not found !!"
+    echo -e "${b}[${r}!${b}]${w} Lỗi! Không tìm thấy danh sách !!"
     exit 0
 fi
 
-echo -ne "      \t${c}[${w}>${c}] ${w}Enter threads count ${g}(${w}Default${g}:${w} 15${g}) ${g}:${n} "
+echo -ne "      \t${c}[${w}>${c}] ${w}Nhập số lượng chủ đề ${g}(${w}Mặc định${g}:${w} 15${g}) ${g}:${n} "
 read thrd
 thread=${thrd:-${thread}}
 
 printf "\n"
-echo -e "      \t${g}[${w}+${g}]${w} Total Wordlist ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
+echo -e "      \t${g}[${w}+${g}]${w}  Tổng danh sánh ${g}:${w} $( wc -l $wordlist | cut -d ' ' -f 1 )"
 
-echo -ne "      \t${g}[${w}+${g}]${w} Start Scanning${n}"
+echo -ne "      \t${g}[${w}+${g}]${w} Bắt đầu quét${n}"
 for((;T++<=10;)) { printf '.'; sleep 1; }
 printf "\n\n"
 
 # Call the check_robots function here
 check_robots "http://${web}"
 if [[ "$save_output" == "yes" ]]; then
-    echo -e "      \t${g}[${w}+${g}]${w} Output will be saved in directory: ${web}"
+    echo -e "      \t${g}[${w}+${g}]${w} Đầu ra sẽ được lưu trong thư mục: ${web}"
 fi
 sleep 3
 
